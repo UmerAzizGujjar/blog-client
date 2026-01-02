@@ -1,0 +1,848 @@
+/* ===========================
+   MERN BLOG APP STYLES
+   Modern Full-Width Design with Modal
+   =========================== */
+
+/* Global Reset and Full Width */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* App Container */
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+/* App Header */
+.app-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.5s ease-out;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.header-left h1 {
+  font-size: 2rem;
+  margin: 0 0 5px 0;
+  color: #667eea;
+  font-weight: 800;
+}
+
+.header-left p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.header-left p strong {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.header-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Create Post Button */
+.btn-create {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-create:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Logout Button */
+.btn-logout {
+  background: transparent;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-logout:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Main Container */
+.app-container {
+  width: 100%;
+  margin: 0;
+  padding: 40px;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: white;
+  font-size: 1.3rem;
+  animation: pulse 1.5s infinite;
+}
+
+/* ===========================
+   MODAL STYLES
+   =========================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: scaleIn 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #666;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: #e0e0e0;
+  transform: rotate(90deg);
+  color: #333;
+}
+
+/* Blog View Modal - Full Screen Display */
+.blog-view-modal {
+  max-width: 900px;
+}
+
+.blog-full-view {
+  padding: 50px;
+}
+
+.blog-full-view h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin: 0 0 25px 0;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.blog-full-view .blog-meta {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.blog-full-content {
+  color: #444;
+  line-height: 2;
+  font-size: 1.15rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 30px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+.blog-full-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.blog-full-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.blog-full-content::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.blog-full-content::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
+
+.blog-full-view .blog-engagement {
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===========================
+   AUTHENTICATION STYLES
+   =========================== */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.5s ease-out;
+}
+
+.auth-card h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.05rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error-message {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  animation: shake 0.5s;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: inherit;
+}
+
+.link-btn:hover {
+  color: #5568d3;
+}
+
+/* ===========================
+   BLOG FORM STYLES
+   =========================== */
+.blog-form-container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.blog-form-container h2 {
+  color: #333;
+  margin: 0 0 30px 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.blog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #555;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* ===========================
+   BUTTON STYLES
+   =========================== */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5568d3 0%, #6a4190 100%);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.btn-edit {
+  background: #28a745;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+.btn-edit:hover:not(:disabled) {
+  background: #218838;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+.btn-delete:hover:not(:disabled) {
+  background: #c82333;
+}
+
+/* ===========================
+   BLOG LIST STYLES
+   =========================== */
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.blog-list-empty {
+  background: white;
+  border-radius: 20px;
+  padding: 80px 50px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-out;
+  grid-column: 1 / -1;
+}
+
+.blog-list-empty p {
+  color: #666;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+/* ===========================
+   BLOG ITEM STYLES
+   =========================== */
+.blog-item {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s;
+  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.blog-item.my-post {
+  border: 2px solid #667eea;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+}
+
+.blog-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.blog-item h3 {
+  color: #333;
+  margin: 0 0 15px 0;
+  font-size: 1.7rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+  flex-wrap: wrap;
+}
+
+.blog-author {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-author::before {
+  content: "👤";
+  font-size: 1rem;
+}
+
+.badge-me {
+  background: #667eea;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-date {
+  color: #999;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.blog-date::before {
+  content: "📅";
+  font-size: 0.9rem;
+}
+
+.blog-content {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 1.05rem;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.blog-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.blog-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.blog-content::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.blog-content::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
+
+/* Like Button and Engagement Section */
+.blog-engagement {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.btn-like {
+  padding: 8px 18px;
+  font-size: 1.1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid #e0e0e0;
+  background: white;
+  color: #666;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-like:hover {
+  border-color: #ff69b4;
+  color: #ff69b4;
+  transform: scale(1.05);
+  background: #fff5f9;
+}
+
+.btn-like.liked {
+  border-color: #ff1744;
+  color: #ff1744;
+  background: #fff0f3;
+  animation: likeAnimation 0.4s ease-out;
+}
+
+@keyframes likeAnimation {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.blog-item-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 15px;
+  border-top: 2px solid #f0f0f0;
+  margin-top: 15px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit {
+  background: #28a745;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* ===========================
+   ANIMATIONS
+   =========================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+@media (max-width: 1400px) {
+  .blog-list {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .blog-list {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  
+  .app-container {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .blog-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .header-left {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 20px;
+  }
+
+  .header-left h1 {
+    font-size: 1.8rem;
+  }
+
+  .header-right {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-create,
+  .btn-logout {
+    width: 100%;
+  }
+
+  .blog-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .app-container {
+    padding: 20px;
+  }
+
+  .blog-form-container,
+  .blog-item,
+  .auth-card {
+    padding: 25px;
+  }
+
+  .form-actions,
+  .blog-item-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .blog-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .modal-content {
+    margin: 20px;
+    max-height: 85vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header-left p {
+    font-size: 0.85rem;
+  }
+  
+  .blog-item h3 {
+    font-size: 1.4rem;
+  }
+  
+  .blog-form-container h2 {
+    font-size: 1.6rem;
+  }
+  
+  .app-container {
+    padding: 15px;
+  }
+}
