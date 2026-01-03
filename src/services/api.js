@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+/**
+ * API Configuration
+ * Uses environment variable for backend URL
+ * Local: http://localhost:5000/api
+ * Production: https://blog-server-production-fa29.up.railway.app/api
+ */
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
+console.log('🔗 API URL:', API_URL); // Debug log to verify correct URL is loaded
 
 // Create axios instance with default config
 const api = axios.create({
